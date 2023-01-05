@@ -1,0 +1,45 @@
+<form [formGroup]="mainForm">
+    <!-- <div class="row">
+        <div class="col-sm-12">
+            {{ mediaType }}
+        </div>
+    </div> -->
+    <!-- URL -->
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <mat-form-field class="input-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.SOURCE' | translate }}</mat-label>
+                <input type="text" matInput formControlName="mediaSrc" maxlength="400" autocomplete="off"
+                    #mediaSrc>
+                <mat-error *ngIf="mainForm.get('mediaSrc').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-2 mb-3">
+        <div class="col-sm-12" align="center" *ngIf="mainForm.get('mediaSrc').value != ''">
+            <div *ngIf="mediaType=='E_VIDEO'">
+                <video [src]="mainForm.get('mediaSrc').value" width="50%" controls></video>
+            </div>
+            <div *ngIf="mediaType=='E_HTML'">
+                <div class="article-content" [innerHtml]="mainForm.get('mediaSrc').value | safeHtml" widh="50%"></div>
+            </div>
+            <div *ngIf="mediaType=='E_AUDIO'">
+                <audio [src]="mainForm.get('mediaSrc').value" width="50%" controls></audio>
+            </div>
+            <div *ngIf="mediaType=='E_IMAGE'">
+                <img [src]="mainForm.get('mediaSrc').value" width="50%"/>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div class="row mt-4">
+    <div class="col-sm-3">
+        <button type="button" class="btn btn-save btn-block" (click)="startSave()">
+            <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+        </button>
+    </div>
+</div>

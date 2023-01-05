@@ -1,0 +1,62 @@
+<div class="app-content">
+    <!-- Form Header -->
+    <!-- <div class="row taf-form-panel">
+        <div class="col-sm-4">
+            <div class="taf-form-title">Employee View</div>
+        </div>
+    </div> -->
+    <!-- Form Body -->
+    <div class="row taf-form-panel">
+        <!-- Basic Info -->
+        <div class="col-sm-3">
+            <form [formGroup]="mainForm">
+                <input type="text" maxlength="250" (keyup.enter)="onSearch()" formControlName="searchValue"
+                    class="taf-input-t1" #searchValue autocomplete="off" placeholder="Tên, mã số">
+                <i class="fa fa-search fa-2x ml-1 taf-btn-icon" (click)="onSearch()"></i>
+            </form>
+            <div class="row mt-1">
+                <div class="col-sm-12" style="padding:0px; overflow-y: scroll; overflow-x: hidden;height: 80vh;">
+                    <div *ngFor="let employee of employees; index as e">
+                        <div class="mb-1" [ngClass]="getCardClass(employee.uuid)" (click)="selectedEmployee=employee">
+                            <img userAvatar [usercode]="employee.username" class="rounded-circle" width="36" height="36"
+                                title="{{ employee.name }}">
+                            {{ employee.name }} ({{ employee.code }})
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9" *ngIf="selectedEmployee">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-sm-6">
+                            <div class="taf-form-title">{{ selectedEmployee?.name }}</div>
+                        </div>
+                        <div class="col-sm-3">
+                            {{ selectedEmployee?.code }}
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+                <div class="col-sm-3" align="right">
+                    <img userAvatar [usercode]="selectedEmployee?.username" class="rounded-circle taf-img-large">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <tabset class="col-sm-12" style="min-height:400px">
+                        <tab [heading]="'Thông tin cá nhân' | translate" id="tabPersonal">
+                            <!-- <app-class-assignment-list [employee]="item" [owner]="'E_EMPLOYEE'"></app-class-assignment-list> -->
+                        </tab>
+                        <tab [heading]="'Bằng cấp/Chứng chỉ' " id="tabCertificate">
+                            <!-- <app-employee-permission-profile-view [employee]="item"></app-employee-permission-profile-view> -->
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

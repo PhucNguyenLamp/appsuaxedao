@@ -1,0 +1,117 @@
+// @import 'variables';
+
+// // TYPE 1
+// .btn-t1 {
+//     border-radius: 8px;
+//     border: solid 1px whitesmoke;
+//     background-color: white;
+//     box-shadow: 1px 1px 1px 1px $btn-shadow-color;
+//     .fa{
+//         color: $default-theme-opposite-color;
+//     }
+// }
+// .btn-t1:hover {
+//     box-shadow: 1px 1px 1px 1px gray;
+// }
+
+// // TYPE 2
+// .btn-t2 {
+//     border-radius: 5px;
+//     background-color: $default-theme-color;
+//     color: white;
+//     box-shadow: 2px 1px 1px 1px $btn-shadow-color;
+// }
+// .btn-t2:hover {
+//     box-shadow: 2px 1px 1px 1px $default-theme-color-light;
+// }
+
+// // TYPE 3
+// .btn-t3 {
+//     border: none;
+//     background-color: transparent;
+//     color: $default-theme-opposite-color;
+// }
+
+
+// // TO BE REVIEWED
+// .btn-default { 
+//     color: $default-font-color;
+//     background-color: rgb(246, 247, 248);
+// }
+
+// .btn-default:hover { 
+//     background-color: white;
+// }
+
+// .btn-primary { 
+//     background-color: $default-theme-color-light;
+//     border: none;
+// }
+// .btn-primary:hover { 
+//     background-color: $default-theme-color;
+// }
+// .btn-primary:disabled { 
+//     background-color: gray;
+// }
+
+// .btn-lite {
+//     border: none;
+//     background-color: transparent;
+// }
+
+// .btn-add { 
+//     border-width: thin;
+//     border-color: $default-line-color;
+// }
+// .btn-add{
+//     .fa{
+//         color: $default-theme-opposite-color;
+//     }
+// }
+
+// .btn-add:hover { 
+//     background-color: whitesmoke;
+// }
+
+// .btn-save { 
+//     background-color: $default-theme-color;
+//     color: white;
+//     border-width: thin;
+// }
+// .btn-save:hover { 
+//     border-width: thin;
+//     color: $default-theme-opposite-color;
+//     // border-color: $default-theme-opposite-color;
+//     // color: 
+// }
+// .btn-save:disabled { 
+//     background-color: $default-theme-color-light;
+// }
+// .btn-save:disabled:hover { 
+//     border-width: thin;
+//     border-color: white;
+// }
+// .badge-primary{
+//     background-color: transparent;
+//     color: $default-font-color;
+// }
+// .custom-checkbox{
+//     .custom-control-label::before,
+//     .custom-control-label::after{
+//         top: -10px;
+//     }
+// }
+// .cal-button-icon-only{
+//     border: none;
+    
+// }
+// .space-lelf{
+//     margin-left: 5px;
+// }
+// .badge-button{
+//     background-color: $default-theme-color;
+//     color: $text-color-bg;
+// }
+
+
+

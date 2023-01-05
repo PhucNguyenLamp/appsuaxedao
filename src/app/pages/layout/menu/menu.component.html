@@ -1,0 +1,94 @@
+<div class="row taf-menu-panel">
+    <div class="col-sm-8">
+        <span class="mr-3">
+            <a routerLink="home" routerLinkActive="active" class="taf-menu-item">
+                <img src="{{ logoUrl }}" alt="{{ companyPrefix }}" height="40">
+            </a>
+        </span>
+        <!-- Exam -->
+        <!-- <a routerLink="profile/cedu-employee-view" class="taf-menu-item mr-3">
+            Hồ sơ nhân sự
+        </a> -->
+        <!-- <a routerLink="main/doc/exam/list" class="menu-item mr-3"
+            *ngIf="getGlobalVariable('ROLE.E_CFORM_EDITOR') == 'true'">
+            Thi/Kiểm tra
+        </a> -->
+        <!-- Survey -->
+        <!-- <a routerLink="main/doc/survey/list" class="menu-item mr-3"
+            *ngIf="getGlobalVariable('ROLE.E_CFORM_EDITOR') == 'true'">
+            Khảo sát
+        </a> -->
+        <!-- Content -->
+        <!-- <div class="menu-dropdown mr-3" *ngIf="getGlobalVariable('ROLE.E_CFORM_ADMIN') == 'true'">
+            <button class="menu-drop-btn" (mouseenter)="dropdownActive=true;">{{ 'Nội dung' | translate }}</button>
+            <div class="menu-dropdown-content" *ngIf="dropdownActive">
+                <a href="#main/question/question-set/list" (click)="routeTo('main/question/question-set/list')">
+                    {{ 'MENU.QUESTION_SETS' | translate }}
+                </a>
+                <a href="#main/material/material-set/list" (click)="routeTo('main/material/material-set/list')">
+                    {{ 'MENU.MATERIAL_SETS' | translate }}
+                </a>
+                <div style="border-bottom: dotted 1px; margin-bottom: 5px; margin-top: 5px;"></div>
+                <a href="#/main/question/question-set-type/list"
+                    (click)="routeTo('main/question/question-set-type/list')">
+                    {{ 'Loại đề' | translate }}
+                </a>
+                <div style="border-bottom: dotted 1px; margin-bottom: 5px; margin-top: 5px;"></div>
+                <a href="#/main/settings/layout/list"
+                    (click)="routeTo('main/settings/layout/list')">
+                    {{ 'Layout' | translate }}
+                </a>
+            </div>
+        </div> -->
+        <!-- Settings -->
+        <div class="taf-menu-dropdown mr-3">
+            <button class="taf-menu-drop-btn" (mouseenter)="dropdownActive=true;">
+                {{ 'Thiết lập' | translate }}
+            </button>
+                <!-- *ngIf="dropdownActive" -->
+            <div class="taf-menu-dropdown-content" *ngIf="dropdownActive">
+                <a href="#/settings/asset-group/list" (click)="routeTo('settings/asset-group/list')">
+                    {{'Nhóm tài sản' | translate }}
+                </a>
+                <!-- <a href="#/main/doc/doc/list" (click)="routeTo('main/doc/doc/list')">
+                    {{'Thiết lập chung' | translate }}
+                </a> -->
+            </div>
+        </div>
+        <!-- Files -->
+        <!-- <a routerLink="main/system/file/list" class="menu-item ml-5"
+            *ngIf="getGlobalVariable('ROLE.E_CFORM_EDITOR') == 'true'">
+            Files
+        </a> -->
+    </div>
+    <!-- Avatar -->
+    <div class="col-sm-3" align="right">
+        <!-- <button mat-button [matMenuTriggerFor]="apps" class="menu-item">
+            <i class="fa fa-th"></i>
+        </button>
+        <mat-menu #apps="matMenu">
+            <a mat-menu-item href="{{ studentPortalUrl }}" target="_blank" class="menu-sub-item">
+                Cổng thông tin học viên
+            </a>
+            <a mat-menu-item href="{{ employeePortalUrl }}" target="_blank" class="menu-sub-item">
+                Cổng thông tin giảng viên
+            </a>
+        </mat-menu> -->
+        <img userAvatar [usercode]="username" class="rounded-circle" width="36" height="36"
+            title="{{ userDisplayName }}">
+    </div>
+    <!-- System -->
+    <div class="col-sm-1 menu-button-panel" align="right">
+        <button mat-button [matMenuTriggerFor]="menu" class="taf-menu-item">
+            <i class="fa fa-ellipsis-v"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item href="{{ myProfileUrl }}" target="_blank">
+                Thông tin cá nhân
+            </a>
+            <button mat-menu-item (click)="changeLanguage('en')" *ngIf="currentLang != 'en'">English</button>
+            <button mat-menu-item (click)="changeLanguage('vi')" *ngIf="currentLang != 'vi'">Tiếng Việt</button>
+            <button mat-menu-item (click)="onLogout()">{{ 'COMMON.ACTION.LOG_OUT' | translate }}</button>
+        </mat-menu>
+    </div>
+</div>

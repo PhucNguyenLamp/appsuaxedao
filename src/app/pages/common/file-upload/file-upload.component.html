@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-sm-12">
+        <span style="font-style: italic;">Note: The file size should not exceed {{ fileMaxSize/1024/1024 | number:'1.1-1' }} MB.</span>
+    </div>
+</div>
+<div class="row m-2">
+    <div class="col-sm-6">
+        <span class="attachment-zone">
+            <input #fileInput type="file" ng2FileSelect [uploader]="uploader" [multiple]="multipleFiles" style="display: none;" />
+            <button type="button" (click)="fileInput.click()" class="btn btn-primary " [disabled]="uploading">
+                Select files ....
+            </button>
+        </span>
+    </div>
+    <div class="col-sm-6" align="right">
+        <button type="button" (click)="onUpload()" *ngIf="!autoUpload && uploader.queue?.length>0" class="btn btn-primary " [disabled]="uploading">
+            <i class="fa fa-upload" aria-hidden="true"></i> Upload
+        </button>
+        <button type="button" (click)="onClearAll()" *ngIf="!autoUpload && uploader.queue?.length>0" class="btn btn-danger ml-2" [disabled]="uploading">
+            <i class="fa fa-trash" aria-hidden="true"></i> Clear All
+        </button>
+    </div>
+</div>
+
+<div *ngIf="uploader.queue?.length>0" class="mt-4">
+    <mat-card class="mt-2" *ngFor="let item of uploader.queue; index as i" style="padding: 0px; margin: 0px;">
+        <mat-card-content style="padding: 5px;" >
+            <div class="row mt-2" >
+                <div class="col-sm-8">
+                    {{ item.file.name }}
+                </div>
+                <div class="col-sm-3" align="right">
+                    {{ item.file.size/1024 | number:'1.1-1' }} kb
+                </div>
+                <div class="col-sm-1" align="right">
+                    <i class="fa fa-trash" aria-hidden="true" (click)="onClearItem(i)" style="cursor: pointer;"></i>
+                </div>
+            </div>
+            <div class="row" *ngIf="uploading==true">
+                <div class="col-sm-12">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"><span style="color: white; background-color: green;">{{item.progress}}%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2" *ngIf="item.file.size > fileMaxSize" >
+                <div class="col-sm-12">
+                    <span style="color: red;">File size should not exceed {{ fileMaxSize/1024/1024 | number:'1.1-1' }} MB</span>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

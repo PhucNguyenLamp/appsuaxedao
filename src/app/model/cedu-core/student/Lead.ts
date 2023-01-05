@@ -1,0 +1,41 @@
+import { BaseEditableMdModel } from "app/shared/models/BaseEditableMdModel";
+import { SocialNetworkAccount } from "./SocialNetworkAccount";
+
+export class Lead extends BaseEditableMdModel {
+    name?: string;
+    status?: string;
+    dob?: number;
+    gender?: string;
+    remark?: string;
+    outletId?: string;
+    outletCode?: string;
+    outletName?: string;
+    sourceId?: string;
+    sourceCode?: string;
+    sourceName?: string;
+    fullAddress?: string;
+    phoneNo?: string;
+    email?: string;
+    contactAddressFull?: string;
+    occupationDesc?: string;
+    permanentAddressFull?: string;
+    contactId?: string;
+    contactCode?: string;
+    contactName?: string;
+    unqualifiedReasonId?: string;
+    unqualifiedReasonCode?: string;
+    unqualifiedReasonName?: string;
+    statusUpdatedAt?: number;
+    programId?: string;
+    programCode?: string;
+    programName?: string;
+    courseId?: string;
+    courseCode?: string;
+    courseName?: string;
+    targetDate?: number;
+    priority?: string;
+    snAccounts?: SocialNetworkAccount[] = [];
+    snAccountsStr?: string;
+    type?: string;
+    online?: boolean;
+}

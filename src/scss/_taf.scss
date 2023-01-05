@@ -1,0 +1,285 @@
+/* TAF  Styles
+*/
+
+/* THEME COLORS */
+/* theme */
+$taf-theme-color: #344563;
+$taf-theme-color-2: #56777a;
+$taf-theme-o-color: #d4ae3d;  // opposite color
+$taf-theme-o-color-2: #f56969;
+$taf-theme-sub-color: #2a9056;
+$taf-theme-sub-color-2: #67b200;
+/* font */
+$taf-font-color: #2f3941;
+// $default-font-light-color: #87929d;
+// $default-font-highlight: #1f73b7;
+
+body { 
+    margin: 0px; 
+    padding: 0px; 
+    font-family: "Roboto", "Helvetica Neue";
+    font-size: 14px;
+    // -moz-osx-font-smoothing: grayscale;
+    // -webkit-font-smoothing: antialiased !important;
+    line-height: 18px;
+    color: $taf-font-color;
+    // background-color: $default-background-color;
+ }
+
+// MENU
+.taf-menu-panel {
+    background-color: $taf-theme-color;
+    height: 52px;
+    padding: 5px;
+    margin: 0px;
+}
+.taf-menu-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.taf-menu-drop-btn {
+    background-color: $taf-theme-color;
+    color: white;
+    padding: 2px;
+    font-size: 14px;
+    border: none;
+}
+.taf-menu-drop-btn:hover {
+    color: $taf-theme-o-color;
+}
+.taf-menu-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    white-space: nowrap;
+    color: $taf-font-color;
+    border-radius: 5px;
+}
+.taf-menu-dropdown-content a {
+    color: $taf-font-color;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.taf-menu-dropdown-content a:hover {
+    background-color: whitesmoke;
+}
+.taf-menu-dropdown:hover .taf-menu-dropdown-content {
+    display: block;
+}
+.taf-menu-item {
+    color: white;
+    // font-weight: normal;
+}
+.taf-menu-item:hover {
+    color: $taf-theme-o-color;
+    // text-decoration: none;
+}
+
+
+// FORM
+.taf-form-panel {
+    // background-color: blue;
+    padding: 5px;
+    margin: 0px;
+}
+.taf-form-header {
+    background-color: white;
+    padding: 0px;
+    min-height: 40px;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.taf-form-body {
+    padding: 5px;
+    // padding-left: 5px;
+    // padding-right: 5px;
+    margin: 0px;
+}
+.taf-form-col {
+    // padding-left: 5px;
+    // padding-right: 5px;
+    // margin: 0px;
+}
+.taf-form-title {
+    // color: $default-font-color;
+    font-size: x-large;
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    // padding-left: 5px;
+    // padding-right: 5px;
+    // margin: 0px;
+}
+.taf-full-width {
+    width: 100%;
+}
+
+// MODAL
+@media (min-width: 768px) {
+    .taf-modal-xl {
+        width: 90%;
+        max-width: 1200px;
+    }
+    .taf-modal-medium {
+        width: 60%;
+        max-width: 800px;
+    }
+    .taf-modal-search {
+        width: 60%;
+        max-width: 1000px;
+    }
+    .taf-modal-xxl {
+        width: 98%;
+        max-width: 1300px;
+    }
+    .taf-modal-full {
+        width: 100%;
+        max-width: 1600px;
+    } 
+}
+.modal-form {
+    border: none;
+}
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+    z-index: 9999 !important;
+}
+.modal-backdrop {
+    z-index: 1000 !important;
+}
+.modal {
+    z-index: 1000 !important;
+}
+
+// BUTTONS
+$default-btn-icon-color: #2f3941;
+$default-li-hover-color: #e6e6e6;
+$bootstrap-font-color: #6b737c;
+$cal-btn-color: #cccccc;
+$text-color-bg: #ffffff;
+$btn-border-color: #f8f9fa;
+$btn-shadow-color: rgb(227, 227, 228);
+.taf-btn-add {
+    border-width: thin;
+    border-color: lightgray;
+    .fa {
+        color: $taf-theme-sub-color;
+    }
+}
+.taf-btn-add:hover {
+    background-color: whitesmoke;
+}
+.taf-btn-save {
+    background-color: $taf-theme-color;
+    color: white;
+    border-width: thin;
+}
+.taf-btn-save:hover {
+    // background-color: $taf-theme-color;
+    color: white;
+    .fa {
+        color: $taf-theme-sub-color;
+    }
+    // border-color: green;
+}
+// Button Type 1
+.taf-btn-icon {
+    color: $taf-theme-o-color;
+    cursor: pointer;
+}
+
+// CARDS
+.taf-card {
+    background-color: whitesmoke;
+    border-left: 5px solid whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.taf-card:hover {
+    background-color: $taf-theme-color;
+    border-left: 5px solid $taf-theme-color;
+    color: white;
+}
+
+.taf-card-selected {
+    background-color: $taf-theme-color;
+    color: white;
+    border-left: 5px solid $taf-theme-o-color;
+}
+
+
+// INPUT
+.taf-input-t1 {
+    // background-color: $taf-theme-color;
+    // border: 1px solid $taf-theme-color;
+    box-sizing: border-box;
+    border: 0;
+    border-bottom: 1px solid $taf-theme-color ;
+    // border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    // color: white;   
+}
+.taf-input-t1:focus {
+    // background-color: $taf-theme-color;
+    border-bottom: 1px solid $taf-theme-o-color ;
+    // border-radius: 5px;
+    // padding: 5px;
+    // color: blue;   
+}
+
+// IMAGE
+.taf-img-large {
+	width: 84px;
+	height: 84px;
+}
+
+
+
+
+// .c-btn-t1:hover {
+//     box-shadow: 1px 1px 1px 1px gray;
+// }
+
+
+
+
+/* common */
+// $default-theme-color: #033641;
+// $default-theme-color-light: #56777a;      // 67 142 185 
+// $default-theme-color-super-light: RGB(221, 231, 232);      // 67 142 185 
+
+// $default-theme-opposite-color: #d4ae3d;
+// // $default-background-color:	#f8f8f8;         // RGB(246, 247, 248)
+// $default-background-color:	#ffffff;         // RGB(246, 247, 248)
+// $default-line-color:	#e1e6ea;             // RGB(225, 230, 234)
+
+/* font */
+// $default-font-color: #2f3941;
+// $default-font-light-color: #87929d;
+// $default-font-highlight: #1f73b7;
+
+// /* button */
+// $default-btn-icon-color: #2f3941;
+// $default-li-hover-color: #e6e6e6;
+// $bootstrap-font-color: #6b737c;
+// $cal-btn-color: #cccccc;
+// $text-color-bg: #ffffff;
+// $btn-border-color: #f8f9fa;
+// $btn-shadow-color: rgb(227, 227, 228);
+
+/* error message */
+// $error-message-color: red;
+
+// /* spacing */
+// $space-small: 5px;
+// $space-medium: 10px;
+// $space-large: 15px;
