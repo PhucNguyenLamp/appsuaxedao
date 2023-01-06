@@ -1,0 +1,15 @@
+<form [formGroup]="mainForm">
+    <div class="row">
+        <div class="col-sm-12">
+            <editor apiKey="pekxooqv81ekzsv0l0d439fk0l4trxd3eia0bhqjphq6z3l7" formControlName="htmlText" [init]="editorConfig" #refHtmlText>
+            </editor>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-save btn-block" (click)="onSave()" [disabled]="!mainForm.valid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+    </div>
+</form>

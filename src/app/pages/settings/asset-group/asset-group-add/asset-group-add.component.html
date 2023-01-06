@@ -1,0 +1,50 @@
+<form [formGroup]="mainForm">
+    <!-- Code - Name -->
+    <div class="row">
+        <div class="col-sm-4">
+            <mat-form-field class="taf-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.CODE' | translate }}</mat-label>
+                <input type="text" appInputCharacterMask matInput formControlName="code" maxlength="20" required #code autocomplete="off">
+                <mat-error *ngIf="mainForm.get('code').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+                <mat-error *ngIf="mainForm.get('code').hasError('existed')">
+                    {{ 'MESSAGE.CODE_EXISTS' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-8">
+            <mat-form-field class="taf-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.NAME' | translate }}</mat-label>
+                <input type="text" matInput formControlName="name" maxlength="250" required #name autocomplete="off">
+                <mat-error *ngIf="mainForm.get('name').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <!-- Sort Index - Inactive -->
+    <div class="row mt-3">
+        <div class="col-sm-4">
+            <mat-form-field class="taf-full-width">
+                <mat-label>{{ 'COMMON.GENERAL.SORT_INDEX' | translate }}</mat-label>
+                <input type="text" matInput formControlName="sortIndex" maxlength="10" numericInputOnly required autocomplete="off">
+                <mat-error *ngIf="mainForm.get('sortIndex').hasError('required')">
+                    {{ 'MESSAGE.REQUIRED_FIELD' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <br>
+            <mat-checkbox formControlName="inactive">{{ 'COMMON.GENERAL.INACTIVE' | translate }}</mat-checkbox>
+        </div>
+    </div>
+    <!-- Form Footer -->
+    <div class="row mt-4">
+        <div class="col-sm-3">
+            <button type="button" class="btn taf-btn-save btn-block" (click)="onSave()" [disabled]="!isFormValid">
+                <i class="fa fa-save"></i> {{ 'COMMON.ACTION.SAVE' | translate }}
+            </button>
+        </div>
+    </div>
+</form>

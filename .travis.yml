@@ -1,0 +1,34 @@
+dist: trusty
+sudo: required
+language: node_js
+node_js:
+  - 'v14.17.0'
+cache:
+  directories:
+    - node_modules
+os:
+  - linux
+addons:
+  chrome: stable
+matrix:
+  fast_finish: true
+install:
+  - npm install -g yarn
+  - yarn install
+script:
+  - yarn run deploy
+env:
+  global:
+    - DEPLOY_BRANCH="master"
+    - SOURCE_DIR="dist/ng/examples"
+    - TARGET_BRANCH="gh-pages"
+    - GIT_EMAIL="nguyenthanhvy105@gmail.com"
+deploy:
+  provider: pages
+  email: $GIT_EMAIL
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  local_dir: $SOURCE_DIR
+  on:
+    branch: $DEPLOY_BRANCH

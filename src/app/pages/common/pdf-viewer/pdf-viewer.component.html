@@ -1,0 +1,62 @@
+<div class="row mt-1" style="margin: 0px;padding: 0px;">
+    <div class="col-sm-2 form-col">
+        <div class="row" style="margin: 0px;padding: 0px;">
+            <div class="col-sm-12 form-col" style="overflow-y: scroll; overflow-x: hidden; height: 75vh;">
+                <div class="row" style="margin: 0px;padding: 0px;">
+                    <div class="col-sm-3 form-col" *ngFor="let e of [].constructor(totalPages); index as i"
+                        align="center" style="padding: 0px;">
+                        <button (click)="page = i+1" class="btn btn-block"
+                            [ngStyle]="{'background-color': page==i+1 ? 'lightyellow': '','border': page==i+1 ? 'solid 1px lightblue': ''}">
+                            {{i+1}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2" style="margin: 0px;background-color: whitesmoke;">
+            <div class="col-sm-8 form-col">
+                <mat-slider [max]="max" [min]="min" [step]="step" (input)="inputUpdate($event)" [(ngModel)]="value">
+                    <!-- [disabled]="disabled"
+                          [max]="max"
+                          [min]="min"
+                          [step]="step"
+                          [discrete]="thumbLabel"
+                          [showTickMarks]="showTicks" -->
+                    <input matSliderThumb [(ngModel)]="value">
+                </mat-slider>
+            </div>
+            <div class="col-sm-4">
+                <div class="mt-4">{{ value }}%</div>
+            </div>
+        </div>
+
+    </div>
+    <!-- onmousedown='return false;' onselectstart='return false;' -->
+    <div class="col-sm-10 form-col" onmousedown='return false;' onselectstart='return false;'>
+        <pdf-viewer [src]="src" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false"
+            [zoom]="zoom" [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
+            [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
+            (pagechanging)="pageChanged($event)" [show-all]="false" [(page)]="page"
+            (after-load-complete)="afterLoadComplete($event)"
+            style="width: 100%; height: 85vh; display: block;margin: 0px;padding: 0px;">
+        </pdf-viewer>
+    </div>
+</div>
+
+
+
+<!-- <div class="row mt-1">
+    <div class="col-sm-12">
+        <button (click)="page = i+1" *ngFor="let e of [].constructor(totalPages); index as i" class="mr-1">{{i+1}}</button>
+    </div>
+</div>
+<div class="row mt-1" >
+    <div class="col-sm-12">
+        <pdf-viewer [src]="src" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false"
+            [zoom]="1" [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
+            [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
+            (pagechanging)="pageChanged($event)" [show-all]="false" [(page)]="page"
+            (after-load-complete)="afterLoadComplete($event)" style="width: 100%; height: 80vh; display: block;">
+        </pdf-viewer>
+    </div>
+</div> -->

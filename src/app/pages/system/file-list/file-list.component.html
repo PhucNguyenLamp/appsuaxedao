@@ -1,0 +1,131 @@
+<form [formGroup]="mainForm">
+    <div class="app-content">
+        <div class="row form-header">
+            <div class="col-sm-6">
+                <span class="form-title">Files</span>
+                <button type="button" class="btn btn-add ml-2" (click)="onAdd(editDialog)">
+                    <i class="fa fa-upload"></i>
+                    <!-- {{ 'COMMON.ACTION.ADD' | translate }} -->
+                </button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-add btn-block" (click)="onConvert(urlConverterDialog)">
+                    <!-- <i class="fa fa-search"></i> -->
+                    Url Converter
+                </button>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="input-full-width">
+                    <mat-label>Giá trị tìm kiếm</mat-label>
+                    <input type="text" matInput formControlName="searchValue" maxlength="250" (keyup.enter)="onSearch()"
+                        #searchValue placeholder="Tên">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-add btn-block" (click)="onSearch()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="row form-body" style="margin: 5px">
+            <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
+                [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'" [selectOnRowClick]="false"
+                [expandableRows]="false" [showReloading]="true" [sortBy]="'code'" [sortAsc]="true">
+                <data-table-column [property]="" [header]="'COMMON.GENERAL.NAME' | translate">
+                    <ng-template #dataTableCell let-item="item">
+                        <span title="{{ item.uuid }}">{{ item.name }}</span>
+                        <!-- <div style="display: block;">{{ cdnUrl.download + '?docID=' + item.contentUuid }}</div> -->
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'Độ lớn (KB)'" [styleClass]="'text-right'" [width]="160">
+                    <ng-template #dataTableCell let-item="item">
+                        {{ item.size/1024 | number:'1.1-1' }}
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="" [header]="'Thời gian tải lên'" [styleClass]="'text-center'"
+                    [width]="150">
+                    <ng-template #dataTableCell let-item="item">
+                        {{ item.createdAt | momentFull }}
+                    </ng-template>
+                </data-table-column>
+                <data-table-column [property]="'createdByCode'" [header]="'Người tải'" [styleClass]="'text-center'"
+                    [width]="220">
+                </data-table-column>
+                <data-table-column [property]="" [header]="''" [styleClass]="'text-center'" [width]="100">
+                    <ng-template #dataTableCell let-item="item">
+                        <button type="button" class="btn btn-add btn-sm space-right-small" (click)="onDownload(item)">
+                            <i class="fa fa-download"></i>
+                        </button>
+                        <button type="button" class="btn btn-add btn-sm space-right-small ml-1"
+                            (click)="copyLink(item.contentUuid)" title="Copy link">
+                            <i class="fa fa-copy"></i>
+                        </button>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+        <!-- <app-confirm-dialog iconCls="fa fa-trash" >
+    </app-confirm-dialog> -->
+
+    </div>
+</form>
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    File
+                    <span *ngIf="mode==0"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
+                    <span *ngIf="mode==1"> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
+                </h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-file-upload [createDoc]="false" [multipleFiles]="true" (valueChange)='onChanged($event)'>
+                </app-file-upload>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #linkDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    Link
+                </h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <app-link-view [itemId]="itemId" [wikiId]="wikiId" [contentUuid]="contentUuid" [type]="'E_ATTACHMENT'" [mimetype]="mimetype">
+            </app-link-view> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #urlConverterDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    Url Converter
+                </h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-url-converter></app-url-converter>
+            </div>
+        </div>
+    </div>
+</ng-template>

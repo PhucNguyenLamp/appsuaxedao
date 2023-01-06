@@ -1,0 +1,95 @@
+<form [formGroup]="mainForm">
+    <div class="app-content taf-form">
+        <div class="row taf-form-header">
+            <div class="col-sm-7 form-col">
+                <span class="taf-form-title">{{ 'Nhóm tài sản' | translate }}</span>
+                <button type="button" class="btn taf-btn-add ml-2" (click)="onAdd(editDialog)">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+            <div class="col-sm-2 form-col">
+                <mat-form-field class="input-full-width">
+                    <mat-label>{{ 'COMMON.GENERAL.SEARCH_INFO' | translate }}</mat-label>
+                    <input type="text" matInput formControlName="searchValue" maxlength="100" (keyup.enter)="onSearch()"
+                        #searchValue placeholder="{{ 'COMMON.GENERAL.SEARCH_INFO_CODE_NAME' | translate }}"
+                        autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-2 form-col">
+                <mat-form-field class="input-full-width">
+                    <mat-label>{{ 'COMMON.GENERAL.STATUS' | translate }}</mat-label>
+                    <mat-select (selectionChange)="onSearch()" formControlName="activeStatus">
+                        <mat-option value="{{ activeStatus }}" *ngFor="let activeStatus of activeStatuses">
+                            {{ 'COMMON.GENERAL.ACTIVE_STATUS_VALUES.' + activeStatus | translate }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-1 form-col">
+                <button type="button" class="btn btn-t1 btn-block" (click)="onSearch()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row form-body">
+            <div class="col-sm-12 form-col">
+                <data-table id="data-grid" headerTitle="" [page]="pageNumber" [items]="items" [itemCount]="itemCount"
+                    (reload)="load($event)" [limit]="10" [header]="false" [selectColumn]="false" [multiSelect]="false"
+                    [pagination_input]="true" [pagination_range]="true" [indexColumnHeader]="'#'"
+                    [selectOnRowClick]="false" [expandableRows]="false" [showReloading]="true" [sortBy]="'code'"
+                    [sortAsc]="true">
+                    <data-table-column [property]="'code'" [header]="'COMMON.GENERAL.CODE' | translate" [width]="100">
+                    </data-table-column>
+                    <data-table-column [property]="'name'" [header]="'COMMON.GENERAL.NAME' | translate">
+                    </data-table-column>
+                    <!-- <data-table-column [property]="'fullAddress'" [header]="'COMMON.CONTACT_INFO.ADDRESS' | translate">
+                    </data-table-column> -->
+                    <data-table-column [property]="'sortIndex'" [header]="'COMMON.GENERAL.SORT_INDEX_SHORT' | translate"
+                        [styleClass]="'text-center'" [width]="120">
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="'COMMON.GENERAL.INACTIVE_SHORT' | translate"
+                        [styleClass]="'text-center'" [width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="">
+                                <span *ngIf="item.inactive"><i class="fa fa-check"></i></span>
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column [property]="" [header]="''" [styleClass]="'text-center'" [width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            <!-- <button type="button" class="btn taf-btn-add taf-btn-sm space-right-small"
+                                (click)="onEdit(editDialog, item)">
+                                <i class="fa fa-edit"></i>
+                            </button> -->
+                            <i class="fa fa-edit btn taf-btn-add" (click)="onEdit(editDialog, item)"></i>
+                        </ng-template>
+                    </data-table-column>
+                </data-table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<ng-template #editDialog>
+    <div class="modal-form">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">
+                    {{ 'Nhóm tài sản' | translate }}
+                    <span *ngIf="isEditMode"> - {{ 'COMMON.ACTION.EDIT' | translate }}</span>
+                    <span *ngIf="!isEditMode"> - {{ 'COMMON.ACTION.ADD' | translate }}</span>
+                </h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-asset-group-add [item]="selectedItem" [mode]="mode" (valueChange)='onChanged($event)'>
+                </app-asset-group-add>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- <app-confirm-dialog iconCls="fa fa-trash" >
+    </app-confirm-dialog> -->

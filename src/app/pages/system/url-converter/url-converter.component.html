@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-sm-12">
+        <mat-form-field class="input-full-width">
+            <mat-label>{{ 'Google Shared Link' | translate }}</mat-label>
+            <input type="text" [(ngModel)]="url" matInput maxlength="500" required #code autocomplete="off">
+        </mat-form-field>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-sm-12">
+        Converted:
+        <div style="font-weight: bold;display: block;">
+            <span>{{ convertedUrl1 }}</span>
+            <button type="button" class="btn btn-add btn-sm space-right-small ml-1" (click)="copyUrl(convertedUrl1)"
+                title="Copy link" *ngIf="convertedUrl1 != '' && convertedUrl1 != null">
+                <i class="fa fa-copy"></i>
+            </button>
+        </div>
+        <div style="display: block;">
+            <span>{{ convertedUrl }}</span>
+            <button type="button" class="btn btn-add btn-sm space-right-small ml-1" (click)="copyUrl(convertedUrl)"
+                title="Copy link" *ngIf="convertedUrl != '' && convertedUrl != null">
+                <i class="fa fa-copy"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-sm-2">
+        <button class="btn btn-save" (click)="convert()">Convert</button>
+    </div>
+    <!-- <div class="col-sm-2">
+        <button class="btn btn-save" (click)="copyUrl()">Copy</button>
+    </div> -->
+</div>
